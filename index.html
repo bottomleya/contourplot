@@ -31,18 +31,6 @@
               console.log(clickX, clickY);
               console.log("drawcircle");
             }
-
-            function getCursorPosition(canvas, e) {
-              // Gets click position
-              rect = canvas.getBoundingClientRect();
-
-              console.log('getcursorpos');
-
-              return {
-                x: e.clientX - rect.left, 
-                y: e.clientY - rect.top
-              };
-            }
         </script>
     </head>
     <body> 
