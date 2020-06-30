@@ -14,7 +14,7 @@ class contourPoint {
         }
         else {
             g = 200;
-            r = Math.round(510 - 5.10 * perc);
+            r = Math.round(510 - 5.10 * p);
         }
         var h = r * 0x10000 + g * 0x100 + b * 0x1;
         return '#' + ('000000' + h.toString(16)).slice(-6);
