@@ -3,6 +3,7 @@ class contourPoint {
         this.x = x;
         this.y = y;
         this.z = 50;
+        this.d = 20;
         this.ctx = ctx;
 
     }
@@ -22,7 +23,7 @@ class contourPoint {
     colourIn() {
         this.ctx.fillStyle = this.percentageToColour(this.z);
         this.ctx.beginPath();
-        this.ctx.arc(clickX, clickY, 10, 0, 2 * Math.PI);
+        this.ctx.arc(this.x, this.y, this.d/2, 0, 2 * Math.PI);
         this.ctx.fill();
     }
 
