@@ -16,6 +16,37 @@
         <script src="js/svg/svg.js"></script>
 
         <title>Click in the box below to add points for contouring.</title>
+        
+        <script>
+            var c = document.getElementById("canvas");
+            var ctx = c.getContext("2d");
+
+            function drawCircle(e) {
+              var pos = getCursorPosition(c, e);
+              var clickX = pos.x;
+              var clickY = pos.y;
+
+              ctx.fillStyle = "#2980b9";
+              ctx.beginPath();
+              ctx.arc(clickX, clickY, 10, 0, 2 * Math.PI);
+              ctx.fill();
+
+              console.log(clickX, clickY);
+              console.log("drawcircle");
+            }
+
+            function getCursorPosition(canvas, e) {
+              // Gets click position
+              rect = canvas.getBoundingClientRect();
+
+              console.log('getcursorpos');
+
+              return {
+                x: e.clientX - rect.left, 
+                y: e.clientY - rect.top
+              };
+            }
+        </script>
     </head>
     <body> 
     <canvas id="canvas" onclick="drawCircle(event)"></canvas>
