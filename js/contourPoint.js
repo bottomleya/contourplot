@@ -7,7 +7,7 @@ class contourPoint {
 
     }
     colourIn() {
-        this.ctx.fillStyle = percentageToColour(this.z);
+        this.ctx.fillStyle = this.percentageToColour(this.z);
         this.ctx.beginPath();
         this.ctx.arc(clickX, clickY, 10, 0, 2 * Math.PI);
         this.ctx.fill();
