@@ -12,7 +12,6 @@
 
         <title>Click in the box below to add points for contouring.</title>
         
-
     </head>
     <body> 
     <canvas id="canvas" onclick="drawCircle(event)"></canvas>
@@ -23,19 +22,52 @@
             
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
+            
+            class contourPoint {
+                constructor(x, y) {
+                    this.x = x;
+                    this.y = y;
+                    this.z = 50;
+                    
+                }
+                colourIn() {
+                    ctx.fillStyle = percentageToColour(this.z);
+                    ctx.beginPath();
+                    ctx.arc(clickX, clickY, 10, 0, 2 * Math.PI);
+                    ctx.fill();
+                }
+                
+                percentageToColour(p) {
+                    var r, g, b = 0;
+                    if(p < 50) {
+                        r = 255;
+                        g = Math.round(5.1 * p);
+                    }
+                    else {
+                        g = 200;
+                        r = Math.round(510 - 5.10 * perc);
+                    }
+                    var h = r * 0x10000 + g * 0x100 + b * 0x1;
+                    return '#' + ('000000' + h.toString(16)).slice(-6);
+                }
+                
+                }
+            }
 
             function drawCircle(e) {
-              var clickX = e.clientX;
-              var clickY = e.clientY;
+                var clickX = e.clientX;
+                var clickY = e.clientY;
+                cp = New contourPoint(clickX, clickY)
+                cp.colourIn()
+                
 
-              ctx.fillStyle = "#2980b9";
-              ctx.beginPath();
-              ctx.arc(clickX, clickY, 10, 0, 2 * Math.PI);
-              ctx.fill();
+
 
               console.log(clickX, clickY);
               console.log("drawcircle");
             }
+            
+            
         </script>
     </body>
 </html>
