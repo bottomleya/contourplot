@@ -6,13 +6,6 @@ class contourPoint {
         this.ctx = ctx;
 
     }
-    colourIn() {
-        this.ctx.fillStyle = this.percentageToColour(this.z);
-        this.ctx.beginPath();
-        this.ctx.arc(clickX, clickY, 10, 0, 2 * Math.PI);
-        this.ctx.fill();
-    }
-
     percentageToColour(p) {
         var r, g, b = 0;
         if(p < 50) {
@@ -26,4 +19,12 @@ class contourPoint {
         var h = r * 0x10000 + g * 0x100 + b * 0x1;
         return '#' + ('000000' + h.toString(16)).slice(-6);
     }
+    colourIn() {
+        this.ctx.fillStyle = this.percentageToColour(this.z);
+        this.ctx.beginPath();
+        this.ctx.arc(clickX, clickY, 10, 0, 2 * Math.PI);
+        this.ctx.fill();
+    }
+
+    
 }
