@@ -12,6 +12,11 @@
 
         <title>Click in the box below to add points for contouring.</title>
         
+
+    </head>
+    <body> 
+    <canvas id="canvas" onclick="drawCircle(event)"></canvas>
+        
         <script>
             var c = document.getElementById("canvas");
             var ctx = c.getContext("2d");
@@ -32,8 +37,5 @@
               console.log("drawcircle");
             }
         </script>
-    </head>
-    <body> 
-    <canvas id="canvas" onclick="drawCircle(event)"></canvas>
     </body>
 </html>
