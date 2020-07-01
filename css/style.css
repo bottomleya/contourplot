@@ -10,7 +10,6 @@ div {
   font-family:'Raleway', sans-serif;
   color:#121212;
   text-align: center;
-  height: 50px;
 }
 
 .heading {
@@ -25,12 +24,13 @@ button {
   background-color: #e7e7e7; 
   color: black;
   border: none;
-  color: white;
   padding: 10px 16px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 12px;
+  transition-duration: 0.4s;
+  padding: 10px;
 }
 
 button:onhover {
