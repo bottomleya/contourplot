@@ -30,7 +30,7 @@
                 var headingItems = document.getElementsByClassName("heading");
                 totalHeight = 0;
                 for (var i=0; i<headingItems.length; i++) {
-                    totalHeight = totalHeight + headingItems.offsetHeight;
+                    totalHeight = totalHeight + headingItems[i].offsetHeight;
                     console.log(headingItems.offsetHeight);
                 }
                 console.log(headingItems);
