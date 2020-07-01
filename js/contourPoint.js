@@ -1,5 +1,7 @@
+// Allows the creation of circles/points for building a contour plot
 class contourPoint {
     constructor(x, y, ctx) {
+        
         this.x = x;
         this.y = y;
         
@@ -8,13 +10,15 @@ class contourPoint {
         this.minD = 5;
         this.maxD = 10;
         
-        this.valIncr = 5;
+        this.valIncr = 1;
         
         this.val = this.minVal;
         this.d = this.minD;
         this.ctx = ctx;
         
     }
+    // converts a percentage value (0-100) to a HEX value
+    // adapted from https://gist.github.com/mlocati/7210513
     percentageToColour(p) {
         var r, g, b = 0;
         console.log(p);
@@ -27,18 +31,24 @@ class contourPoint {
             r = Math.round(510 - 5.10 * p);
         }
         var h = r * 0x10000 + g * 0x100 + b * 0x1;
-        var styleStr = '#' + ('000000' + h.toString(16)).slice(-6);
-        console.log(styleStr);
-        return styleStr;
+        return styleStr = '#' + ('000000' + h.toString(16)).slice(-6);
     }
     setValue(val) {
-        this.val = val;
+        // Limit value to maximum amount
+        if val > this.maxVal {
+            this.val = max.Val;
+        } else {
+            this.val = val;
+        }
+        // Set diameter according to newly set point value
         this.setDia();
     }
     setDia() {
-        this.d = this.minD + (this.val - this.minVal) * this.maxVal / this.minVal;
+        // Uses linear interpolation to calculate diameter from point value
+        this.d = this.minD + (this.val - this.minVal) * (this.maxVal - this.minVal) / (this.maxD - this.minD);
     }
     growPoint() {
+        // increment size of point
         this.setValue(this.val + this.valIncr);
         this.colourIn();
     }
