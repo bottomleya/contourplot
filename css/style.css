@@ -2,7 +2,7 @@ canvas {
   position: relative;
   background: #525252;
   width: 100%;
-  height: eval(100%-50px);
+  height: 100%;
 }
 
 div {
@@ -10,6 +10,7 @@ div {
   font-family:'Raleway', sans-serif;
   color:#121212;
   text-align: center;
+  border-radius: 0px 0px 12px 12px;
 }
 
 .heading {
@@ -18,11 +19,14 @@ div {
   padding: 10px;
 }
 
-body { margin: 0 }
+body { 
+  margin: 0;
+  background-color: #525252;
+}
 
 button {
   background-color: #808080; 
-  color: #b8b8b8;
+  color: #d4d4d4;
   border: none;
   text-align: center;
   text-decoration: none;
@@ -31,6 +35,7 @@ button {
   transition-duration: 0.4s;
   padding: 10px;
   margin: 15px;
+  border-radius: 12px;
 }
 
 button:hover {
