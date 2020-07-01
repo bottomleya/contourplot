@@ -15,7 +15,8 @@
         
     </head>
     <body> 
-    <canvas id="canvas" onclick="drawCircle(event)"></canvas>
+    <canvas id="canvas" onmousedown="createPoint(event)" onmouseup="renderContourPlot(event)"></canvas>
+    <!--<canvas id="canvas" onclick="drawCircle(event)"></canvas>-->
         
         <script>
             var c = document.getElementById("canvas");
@@ -24,6 +25,16 @@
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             
+            function createPoint(e) {
+                var clickX = e.clientX;
+                var clickY = e.clientY;
+                cp = new contourPoint(clickX, clickY, ctx);
+                
+                growPointTimer = setinterval(cp.growPoint, 100);
+            }
+            function renderContourPlot(e) {
+                clearinterval(growPointTimer);
+            }
             function drawCircle(e) {
                 var clickX = e.clientX;
                 var clickY = e.clientY;
