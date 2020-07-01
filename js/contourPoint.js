@@ -17,9 +17,9 @@ class contourPoint {
         this.ctx = ctx;
         
         this.colourMap = [
-            { p: 0.0, color: { r: 0xff, g: 0x00, b: 0, a: 0.5} },
+            { p: 0.0, color: { r: 0x00, g: 0xff, b: 0, a: 0.8} },
             { p: 0.5, color: { r: 0xff, g: 0xff, b: 0, a: 0.5} },
-            { p: 1.0, color: { r: 0x00, g: 0xff, b: 0, a: 0.5} } ];
+            { p: 1.0, color: { r: 0xff, g: 0x00, b: 0, a: 0.4} } ];
         
     }
     // converts a percentage value (0-1) to a RGBA value
