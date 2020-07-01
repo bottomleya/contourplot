@@ -15,11 +15,10 @@
         
     </head>
     <body>
-    <div>
+    <div class="heading">
         Click & Hold to create nodes for contouring!
     </div>
-    <canvas id="canvas" onmousedown="createPoint(event)" onmouseup="renderContourPlot(event)"></canvas>
-    <!--<canvas id="canvas" onclick="drawCircle(event)"></canvas>-->
+    <canvas id="canvas" onmousedown="createPoint(event)" onmouseup="renderContourPoints(event)"></canvas>
         
         <script>
             var c = document.getElementById("canvas");
@@ -48,17 +47,8 @@
                     }
                 }, 100);
             }
-            function renderContourPlot(e) {
+            function renderContourPoints(e) {
                 clearInterval(growPointTimer);
-            }
-            function drawCircle(e) {
-                var clickX = e.clientX;
-                var clickY = e.clientY;
-                cp = new contourPoint(clickX, clickY, ctx);
-                cp.colourIn();
-                
-                console.log(clickX, clickY);
-                console.log("drawcircle");
             }
                        
         </script>
