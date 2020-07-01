@@ -18,8 +18,8 @@
     <div class="heading">
         Click & Hold to create nodes for contouring!
         </br>
-        <button id="btnRenderContourPlot" type="button" onclick="renderContourPlot(event)">Click to Render Contour Plot</button>
-        <button id="btnResetCanvas" type="button" onclick="resetCanvas(event)">Click to Reset Canvas</button>
+        <button id="btnRenderContourPlot" type="button" href='javascript:void();' onclick="renderContourPlot(event)">Click to Render Contour Plot</button>
+        <button id="btnResetCanvas" type="button" href='javascript:void();' onclick="resetCanvas(event)">Click to Reset Canvas</button>
     </div>
     <canvas id="canvas" onmousedown="createPoint(event)" onmouseup="renderContourPoints(event)"></canvas>
         
