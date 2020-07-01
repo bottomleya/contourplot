@@ -7,10 +7,10 @@ class contourPoint {
         
         this.minVal = 5;
         this.maxVal = 100;
-        this.minD = 20;
+        this.minD = 10;
         this.maxD = 300;
         
-        this.valIncr = 5;
+        this.baseGrowthRate = 0.1;
         
         this.val = this.minVal;
         this.d = this.minD;
@@ -50,7 +50,7 @@ class contourPoint {
     }
     growPoint() {
         // increment size of point
-        this.setValue(this.val + this.valIncr);
+        this.setValue(this.val + this.baseGrowthRate*this.d);
         this.colourIn();
     }
     colourIn() {
