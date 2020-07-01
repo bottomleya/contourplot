@@ -26,7 +26,9 @@ class contourPoint {
             r = Math.round(510 - 5.10 * p);
         }
         var h = r * 0x10000 + g * 0x100 + b * 0x1;
-        return '#' + ('000000' + h.toString(16)).slice(-6);
+        styleStr = '#' + ('000000' + h.toString(16)).slice(-6);
+        console.log(styleStr);
+        return styleStr;
     }
     setValue(val) {
         this.val = val;
@@ -34,8 +36,6 @@ class contourPoint {
     }
     setDia() {
         this.d = this.minD + (this.val - this.minVal) * this.maxVal / this.minVal;
-        console.log(this.val);
-        console.log(this.d);
     }
     growPoint() {
         this.setValue(this.val + this.valIncr);
