@@ -5,4 +5,8 @@ canvas {
   height: 100%;
 }
 
+div {
+  background: #929292;
+}
+
 body { margin: 0 }
