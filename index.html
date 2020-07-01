@@ -34,7 +34,16 @@
                 points.push(cp);
                 console.log(points);
                 
-                growPointTimer = setInterval(function(){cp.growPoint();}, 100);
+                growPointTimer = setInterval(function(){
+                    // increment size of new point
+                    cp.growPoint();
+                    // clear canvas
+                    ctx.clearRect(0,0,canvas.width,canvas.height);
+                    // redraw all points
+                    for (i=0; i<points.length; i++) {
+                        points[i].colourIn();
+                    }
+                }, 100);
             }
             function renderContourPlot(e) {
                 clearInterval(growPointTimer);
