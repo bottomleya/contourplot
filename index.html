@@ -30,6 +30,7 @@
                 var clickX = e.clientX;
                 var clickY = e.clientY;
                 cp = new contourPoint(clickX, clickY, ctx);
+                cp.colourIn();
                 points.push(cp);
                 console.log(points);
                 
