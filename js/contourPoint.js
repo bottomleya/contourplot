@@ -6,9 +6,9 @@ class contourPoint {
         this.minVal = 5;
         this.maxVal = 100;
         this.minD = 5;
-        this.maxD = 100;
+        this.maxD = 10;
         
-        this.valIncr = 0.1;
+        this.valIncr = 5;
         
         this.val = this.minVal;
         this.d = this.minD;
