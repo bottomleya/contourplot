@@ -30,10 +30,10 @@
                 var clickY = e.clientY;
                 cp = new contourPoint(clickX, clickY, ctx);
                 
-                growPointTimer = setinterval(cp.growPoint, 100);
+                growPointTimer = setInterval(cp.growPoint, 100);
             }
             function renderContourPlot(e) {
-                clearinterval(growPointTimer);
+                clearInterval(growPointTimer);
             }
             function drawCircle(e) {
                 var clickX = e.clientX;
