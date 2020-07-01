@@ -5,8 +5,8 @@ class contourPoint {
         this.x = x;
         this.y = y;
         
-        this.minVal = 5;
-        this.maxVal = 100;
+        this.minVal = 0.05;
+        this.maxVal = 1;
         this.minD = 10;
         this.maxD = 200;
         
@@ -22,7 +22,7 @@ class contourPoint {
             { p: 1.0, color: { r: 0x00, g: 0xff, b: 0, a: 0.5} } ];
         
     }
-    // converts a percentage value (0-100) to a RGBA value
+    // converts a percentage value (0-1) to a RGBA value
     // adapted from https://stackoverflow.com/questions/7128675/from-green-to-red-color-depend-on-percentage
     percentageToColour(p) {
         for (var i = 1; i < this.colourMap.length - 1; i++) {
