@@ -21,6 +21,7 @@
         <script>
             var c = document.getElementById("canvas");
             var ctx = c.getContext("2d");
+            var points = [];
             
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
@@ -29,6 +30,8 @@
                 var clickX = e.clientX;
                 var clickY = e.clientY;
                 cp = new contourPoint(clickX, clickY, ctx);
+                points.push(cp);
+                console.log(points);
                 
                 growPointTimer = setInterval(function(){cp.growPoint();}, 100);
             }
