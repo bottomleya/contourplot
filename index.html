@@ -19,6 +19,7 @@
         Click & Hold to create nodes for contouring!
         </br>
         <button id="btnRenderContourPlot" type="button" onclick="renderContourPlot(event)">Click to Render Contour Plot</button>
+        <button id="btnResetCanvas" type="button" onclick="resetCanvas(event)">Click to Reset Canvas</button>
     </div>
     <canvas id="canvas" onmousedown="createPoint(event)" onmouseup="renderContourPoints(event)"></canvas>
         
@@ -37,11 +38,33 @@
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight - totalHeight;
             }
+                       
+            function onWindowResize() {
+                sizeCanvas();
+                clearCanvas();
+                drawPoints();
+            }
+            window.onresize = onWindowResize;
             
             sizeCanvas();
-            window.onresize = sizeCanvas;
             var points = [];
+                                        
+            function clearCanvas() {
+                ctx.clearRect(0,0,canvas.width,canvas.height);
+            }
             
+            function resetCanvas() {
+                points = [];
+                clearCanvas();
+            }
+            
+            function drawPoints() {
+                // draw all points
+                for (i=0; i<points.length; i++) {
+                    points[i].colourIn();
+                }
+            }
+                                        
             function createPoint(e) {
                 // Get x, y coordinates
                 const rect = c.getBoundingClientRect();
@@ -51,17 +74,12 @@
                 cp = new contourPoint(clickX, clickY, ctx);
                 cp.colourIn();
                 points.push(cp);
-                console.log(points);
                 
                 growPointTimer = setInterval(function(){
                     // increment size of new point
                     cp.growPoint();
-                    // clear canvas
-                    ctx.clearRect(0,0,canvas.width,canvas.height);
-                    // redraw all points
-                    for (i=0; i<points.length; i++) {
-                        points[i].colourIn();
-                    }
+                    clearCanvas();
+                    drawPoints();
                 }, 100);
             }
             function renderContourPoints(e) {
