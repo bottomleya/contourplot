@@ -31,7 +31,7 @@ class contourPoint {
             r = Math.round(510 - 5.10 * p);
         }
         var h = r * 0x10000 + g * 0x100 + b * 0x1;
-        return styleStr = '#' + ('000000' + h.toString(16)).slice(-6);
+        return '#' + ('000000' + h.toString(16)).slice(-6);
     }
     setValue(val) {
         // Limit value to maximum amount
