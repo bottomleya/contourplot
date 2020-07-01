@@ -2,7 +2,6 @@ class contourPoint {
     constructor(x, y, ctx) {
         this.x = x;
         this.y = y;
-        var me = this;
         
         this.minVal = 5;
         this.maxVal = 100;
@@ -30,23 +29,23 @@ class contourPoint {
         return '#' + ('000000' + h.toString(16)).slice(-6);
     }
     setValue(val) {
-        me.val = val;
-        me.setDia();
+        this.val = val;
+        this.setDia();
     }
     setDia() {
-        me.d = me.minD + (me.val - me.minVal) * me.maxVal / me.minVal;
-        console.log(me.val);
-        console.log(me.d);
+        this.d = this.minD + (this.val - this.minVal) * this.maxVal / this.minVal;
+        console.log(this.val);
+        console.log(this.d);
     }
     growPoint() {
-        me.setValue(me.val + me.valIncr);
-        me.colourIn();
+        this.setValue(this.val + this.valIncr);
+        this.colourIn();
     }
     colourIn() {
-        me.ctx.fillStyle = me.percentageToColour(me.val);
-        me.ctx.beginPath();
-        me.ctx.arc(me.x, me.y, me.d/2, 0, 2 * Math.PI);
-        me.ctx.fill();
+        this.ctx.fillStyle = this.percentageToColour(this.val);
+        this.ctx.beginPath();
+        this.ctx.arc(this.x, this.y, this.d/2, 0, 2 * Math.PI);
+        this.ctx.fill();
     }
 
     
