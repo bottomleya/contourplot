@@ -40,7 +40,7 @@ class contourPoint {
             r: Math.floor(lower.color.r * pctLower + upper.color.r * pctUpper),
             g: Math.floor(lower.color.g * pctLower + upper.color.g * pctUpper),
             b: Math.floor(lower.color.b * pctLower + upper.color.b * pctUpper),
-            a: a
+            a: lower.color.a * pctLower + upper.color.a * pctUpper
         };
         return 'rgba(' + [color.r, color.g, color.b, color.a].join(',') + ')';
     }
