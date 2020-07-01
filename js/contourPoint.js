@@ -63,7 +63,6 @@ class contourPoint {
     growPoint() {
         // increment size of point
         this.setValue(this.val + this.baseGrowthRate*Math.sqrt(this.d));
-        this.colourIn();
     }
     colourIn() {
         this.ctx.fillStyle = this.percentageToColour(this.val);
