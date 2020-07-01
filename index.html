@@ -24,7 +24,8 @@
             function sizeCanvas() {
                 var c = document.getElementById("canvas");
                 var ctx = c.getContext("2d");
-                var headingsItems = document.getElementsByClassName("heading");
+                var headingItems = document.getElementsByClassName("heading");
+                console.log(headingItems);
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
             }();
@@ -32,8 +33,11 @@
             var points = [];
             
             function createPoint(e) {
-                var clickX = e.clientX;
-                var clickY = e.clientY;
+                // Get x, y coordinates
+                const rect = ctx.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const clickY = e.clientY - rect.top;
+                // Create new point
                 cp = new contourPoint(clickX, clickY, ctx);
                 cp.colourIn();
                 points.push(cp);
