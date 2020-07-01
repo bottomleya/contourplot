@@ -17,12 +17,13 @@ class contourPoint {
     }
     percentageToColour(p) {
         var r, g, b = 0;
+        console.log(p);
         if(p < 50) {
             r = 255;
             g = Math.round(5.1 * p);
         }
         else {
-            g = 200;
+            g = 255;
             r = Math.round(510 - 5.10 * p);
         }
         var h = r * 0x10000 + g * 0x100 + b * 0x1;
