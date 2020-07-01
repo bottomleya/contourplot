@@ -35,7 +35,7 @@ class contourPoint {
     }
     setValue(val) {
         // Limit value to maximum amount
-        if val > this.maxVal {
+        if (val > this.maxVal) {
             this.val = max.Val;
         } else {
             this.val = val;
