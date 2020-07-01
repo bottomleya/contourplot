@@ -17,6 +17,7 @@
     <body>
     <div class="heading">
         Click & Hold to create nodes for contouring!
+        <button id="btnRenderContourPlot" type="button" onclick="renderContourPlot(event)">Click to Render Contour Plot</button>
     </div>
     <canvas id="canvas" onmousedown="createPoint(event)" onmouseup="renderContourPoints(event)"></canvas>
         
@@ -31,14 +32,13 @@
                 totalHeight = 0;
                 for (var i=0; i<headingItems.length; i++) {
                     totalHeight = totalHeight + headingItems[i].offsetHeight;
-                    console.log(headingItems.offsetHeight);
                 }
-                console.log(headingItems);
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight - totalHeight;
             }
             
             sizeCanvas();
+            window.onresize = sizeCanvas;
             var points = [];
             
             function createPoint(e) {
@@ -66,7 +66,9 @@
             function renderContourPoints(e) {
                 clearInterval(growPointTimer);
             }
-                       
+            function renderContourPlot(e) {
+                console.log("rendering contour plot now...");
+            }
         </script>
     </body>
 </html>
