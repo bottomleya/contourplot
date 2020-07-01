@@ -35,7 +35,7 @@
                 }
                 console.log(headingItems);
                 canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
+                canvas.height = window.innerHeight - totalHeight;
             }
             
             sizeCanvas();
@@ -43,7 +43,7 @@
             
             function createPoint(e) {
                 // Get x, y coordinates
-                const rect = ctx.getBoundingClientRect();
+                const rect = c.getBoundingClientRect();
                 const clickX = e.clientX - rect.left;
                 const clickY = e.clientY - rect.top;
                 // Create new point
