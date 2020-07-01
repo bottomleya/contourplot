@@ -8,7 +8,7 @@ class contourPoint {
         this.minVal = 5;
         this.maxVal = 100;
         this.minD = 5;
-        this.maxD = 10;
+        this.maxD = 100;
         
         this.valIncr = 1;
         
@@ -21,7 +21,6 @@ class contourPoint {
     // adapted from https://gist.github.com/mlocati/7210513
     percentageToColour(p) {
         var r, g, b = 0;
-        console.log(p);
         if(p < 50) {
             r = 255;
             g = Math.round(5.1 * p);
@@ -36,7 +35,7 @@ class contourPoint {
     setValue(val) {
         // Limit value to maximum amount
         if (val > this.maxVal) {
-            this.val = max.Val;
+            this.val = this.maxVal;
         } else {
             this.val = val;
         }
@@ -45,7 +44,9 @@ class contourPoint {
     }
     setDia() {
         // Uses linear interpolation to calculate diameter from point value
-        this.d = this.minD + (this.val - this.minVal) * (this.maxVal - this.minVal) / (this.maxD - this.minD);
+        this.d = this.minD + (this.val - this.minVal) * (this.maxD - this.minD) / (this.maxVal - this.minVal);
+        console.log(this.val);
+        console.log(this.d);
     }
     growPoint() {
         // increment size of point
