@@ -11,10 +11,13 @@
         <script src="js/jquery-3.4.1.min.js"></script>
         <script src="js/contourPoint.js"></script>
 
-        <title>Click in the box below to add points for contouring.</title>
+        <title>ContourPlot | Generate Your Own Plot</title>
         
     </head>
-    <body> 
+    <body>
+    <div>
+        Click & Hold to create nodes for contouring!
+    </div>
     <canvas id="canvas" onmousedown="createPoint(event)" onmouseup="renderContourPlot(event)"></canvas>
     <!--<canvas id="canvas" onclick="drawCircle(event)"></canvas>-->
         
