@@ -10,7 +10,7 @@ class contourPoint {
         this.minD = 10;
         this.maxD = 200;
         
-        this.baseGrowthRate = 0.1;
+        this.baseGrowthRate = 0.5;
         
         this.val = this.minVal;
         this.d = this.minD;
