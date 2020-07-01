@@ -21,10 +21,18 @@
     <canvas id="canvas" onmousedown="createPoint(event)" onmouseup="renderContourPoints(event)"></canvas>
         
         <script>
+            
+            var c = document.getElementById("canvas");
+            var ctx = c.getContext("2d");
+            
             function sizeCanvas() {
-                var c = document.getElementById("canvas");
-                var ctx = c.getContext("2d");
+                // get heading items
                 var headingItems = document.getElementsByClassName("heading");
+                totalHeight = 0;
+                for (var i=0; i<headingItems.length; i++) {
+                    totalHeight = totalHeight + headingItems.offsetHeight;
+                    console.log(headingItems.offsetHeight);
+                }
                 console.log(headingItems);
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
