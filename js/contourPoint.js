@@ -57,8 +57,8 @@ class contourPoint {
     setDia() {
         // Uses linear interpolation to calculate diameter from point value
         this.d = this.minD + (this.val - this.minVal) * (this.maxD - this.minD) / (this.maxVal - this.minVal);
-        console.log(this.val);
-        console.log(this.d);
+        //console.log(this.val);
+        //console.log(this.d);
     }
     growPoint() {
         // increment size of point
