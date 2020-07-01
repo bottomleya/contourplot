@@ -2,11 +2,18 @@ canvas {
   position: relative;
   background: #525252;
   width: 100%;
-  height: 100%;
+  height: eval(100%-50px);
 }
 
 div {
   background: #929292;
+  font-family:'Raleway', sans-serif;
+  font-weight:400;
+  line-height:1.7;
+  color:#121212;
+  text-align: center;
+  text-margin: 10px;
+  height: 50px;
 }
 
 body { margin: 0 }
