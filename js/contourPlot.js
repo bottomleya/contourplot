@@ -50,7 +50,9 @@ class contourPlot {
         for (var i=0; i<this.widthTotPx; i++) {
             // loop height
             for (var j=0; j<this.heightTotPx; j++) {
-                this.drawSquare(i*this.granularity, j*this.granularity, "#000000");
+                var p = i/this.widthTotPx;
+                var colour = this.percentageToColour(p);
+                this.drawSquare(i*this.granularity, j*this.granularity, this.granularity, colour);
                 // calculate average val
                 //for (var k=0; k<this.points.length; k++) {
                //     console.log(this.points[k].x);
@@ -63,7 +65,7 @@ class contourPlot {
     }
     drawSquare(x, y, size, style) {
         this.ctx.fillStyle = style;
-        this.ctx.fillRect(x, y, size);
+        this.ctx.fillRect(x, y, size, size);
     }
 }
     
