@@ -8,6 +8,8 @@ class contourPlot {
 
       this.points = points;
       this.ctx = ctx;
+        
+      this.plotMatrix = [];
 
       this.sizeWidth = ctx.canvas.clientWidth;
       this.sizeHeight = ctx.canvas.clientHeight;
@@ -48,15 +50,21 @@ class contourPlot {
         console.log(this.heightTotPx);
         // loop width
         for (var i=0; i<this.widthTotPx; i++) {
+            column = [];
             // loop height
             for (var j=0; j<this.heightTotPx; j++) {
                 var x = i*this.granularity;
                 var y = j*this.granularity;
                 var p = this.calculateSpatialAverage(x, y);
+                // add to matrix
+                column.push(p);
                 var colour = this.percentageToColour(p);
                 this.drawSquare(x, y, this.granularity, colour);                
             }
+            this.plotMatrix.push(column);
         }
+        console.log(this.plotMatrix);
+        console.log("plot complete...");
     }
     calculateSpatialAverage(x, y) {
         // loop through points
@@ -78,6 +86,11 @@ class contourPlot {
         if (distance<0.0001) distance = 0.0001;
         // return inverted distance
         return Math.pow(1/distance, 2);
+    }
+    getContourVal(x, y) {
+        var i = Math.floor(x / this.granularity);
+        var j = Math.floor(y / this.granularity);
+        return this.plotMatrix[j][i];
     }
     calculateDistance(xa, ya, xb, yb) {
         return Math.sqrt(Math.pow(xa-xb, 2) + Math.pow(ya-yb,2))
