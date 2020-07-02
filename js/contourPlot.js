@@ -77,7 +77,7 @@ class contourPlot {
         // limit division by zero
         if (distance<0.0001) distance = 0.0001;
         // return inverted distance
-        return Math.pow(1/distance, 1/10);
+        return Math.pow(1/distance, 3);
     }
     calculateDistance(xa, ya, xb, yb) {
         return Math.sqrt(Math.pow(xa-xb, 2) + Math.pow(ya-yb,2))
