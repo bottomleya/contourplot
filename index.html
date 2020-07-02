@@ -10,6 +10,7 @@
 
         <script src="js/jquery-3.4.1.min.js"></script>
         <script src="js/contourPoint.js"></script>
+        <script src="js/contourPlot.js"></script>
 
         <title>ContourPlot | Generate Your Own Plot</title>
         
@@ -35,8 +36,8 @@
                 for (var i=0; i<headingItems.length; i++) {
                     totalHeight = totalHeight + headingItems[i].offsetHeight;
                 }
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight - totalHeight;
+                c.width = window.innerWidth;
+                c.height = window.innerHeight - totalHeight;
             }
                        
             function onWindowResize() {
@@ -50,7 +51,7 @@
             var points = [];
                                         
             function clearCanvas() {
-                ctx.clearRect(0,0,canvas.width,canvas.height);
+                ctx.clearRect(0,0,c.width,c.height);
             }
             
             function resetCanvas() {
@@ -71,13 +72,14 @@
                 const clickX = e.clientX - rect.left;
                 const clickY = e.clientY - rect.top;
                 // Create new point
-                cp = new contourPoint(clickX, clickY, ctx);
-                cp.colourIn();
-                points.push(cp);
+                console.log("Creating new point at (" + clickX + ", " clickY +")");
+                cPoint = new contourPoint(clickX, clickY, ctx);
+                cPoint.colourIn();
+                points.push(cPoint);
                 
                 growPointTimer = setInterval(function(){
                     // increment size of new point
-                    cp.growPoint();
+                    cPoint.growPoint();
                     clearCanvas();
                     drawPoints();
                 }, 100);
@@ -86,7 +88,9 @@
                 clearInterval(growPointTimer);
             }
             function renderContourPlot(e) {
-                console.log("rendering contour plot now...");
+                console.log("Rendering contour plot now...");
+                cPlot = new contourPlot(points, ctx);
+                cPlot.drawPlot();
             }
         </script>
     </body>
