@@ -90,7 +90,7 @@ class contourPlot {
     getContourVal(x, y) {
         var i = Math.floor(x / this.granularity);
         var j = Math.floor(y / this.granularity);
-        return this.plotMatrix[j][i];
+        return this.plotMatrix[i][j];
     }
     calculateDistance(xa, ya, xb, yb) {
         return Math.sqrt(Math.pow(xa-xb, 2) + Math.pow(ya-yb,2))
