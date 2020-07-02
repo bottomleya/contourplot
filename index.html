@@ -72,7 +72,7 @@
                 const clickX = e.clientX - rect.left;
                 const clickY = e.clientY - rect.top;
                 // Create new point
-                console.log("Creating new point at (" + clickX + ", " clickY +")");
+                console.log("Creating new point at (" + clickX + ", " + clickY + ")");
                 cPoint = new contourPoint(clickX, clickY, ctx);
                 cPoint.colourIn();
                 points.push(cPoint);
