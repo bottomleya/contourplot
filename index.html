@@ -75,8 +75,9 @@
                 // Create new point
                 console.log("Creating new point at (" + clickX + ", " + clickY + ")");
                 cPoint = new contourPoint(clickX, clickY, ctx);
-                cPoint.colourIn();
                 points.push(cPoint);
+                    clearCanvas();
+                    drawPoints();
                 
                 growPointTimer = setInterval(function(){
                     // increment size of new point
