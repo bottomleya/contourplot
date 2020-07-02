@@ -50,15 +50,23 @@ class contourPlot {
         for (var i=0; i<this.widthTotPx; i++) {
             // loop height
             for (var j=0; j<this.heightTotPx; j++) {
-                var p = i/this.widthTotPx;
+                var x = i*this.granularity;
+                var y = j*this.granularity;
+                var p = this.calculateSpatialAverage(x, y);
                 var colour = this.percentageToColour(p);
-                this.drawSquare(i*this.granularity, j*this.granularity, this.granularity, colour);
-                // calculate average val
-                //for (var k=0; k<this.points.length; k++) {
-               //     console.log(this.points[k].x);
-               // }
+                this.drawSquare(x, y, this.granularity, colour);                
             }
         }
+    }
+    calculateSpatialAverage(x, y) {
+        // loop through points
+        for (var k=0; k<this.points.length; k++) {
+            var distance = this.calculateDistance(x, y, this.points[k].x, this.points[k].y);
+            console.log(distance * this.points[k].val);
+        }
+    }
+    calculateDistance(xa, ya, xb, yb) {
+        return Math.sqrt(Math.pow(xa-xb, 2) + Math.pow(ya-yb))
     }
     clearCanvas() {
       this.ctx.clearRect(0,0,this.sizeWidth,this.sizeHeight);
