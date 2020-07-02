@@ -12,7 +12,7 @@ class contourPlot {
       this.sizeWidth = ctx.canvas.clientWidth;
       this.sizeHeight = ctx.canvas.clientHeight;
       this.widthTotPx = Math.floor(this.sizeWidth / Math.sqrt(this.granularity))
-      this.widthTotPx = Math.floor(this.sizeHeight / Math.sqrt(this.granularity))
+      this.HeightTotPx = Math.floor(this.sizeHeight / Math.sqrt(this.granularity))
 
       this.colourMap = [
           { p: 0.0, color: { r: 0x00, g: 0xff, b: 0, a: 0.8} },
@@ -22,6 +22,8 @@ class contourPlot {
     drawPlot() {
         // clear canvas
         this.clearCanvas();
+        console.log(this.widthTotPx);
+        console.log(this.heightTotPx);
         // loop width
         for (var i=0; i<this.widthTotPx; i++) {
             // loop height
