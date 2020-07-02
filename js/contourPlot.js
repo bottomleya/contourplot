@@ -65,7 +65,7 @@ class contourPlot {
         // calculate distances to each point
         for (var k=0; k<this.points.length; k++) {
             var distance = this.calculateDistance(x, y, this.points[k].x, this.points[k].y);
-            distance = distanceTranform(distance);
+            distance = this.distanceTranform(distance);
             // add to sums
             normlisedSum = normlisedSum + this.points[k].val * distance;
             distanceSum = distanceSum + distance;
