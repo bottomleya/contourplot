@@ -66,7 +66,7 @@ class contourPlot {
         }
     }
     calculateDistance(xa, ya, xb, yb) {
-        return Math.sqrt(Math.pow(xa-xb, 2) + Math.pow(ya-yb))
+        return Math.sqrt(Math.pow(xa-xb, 2) + Math.pow(ya-yb,2))
     }
     clearCanvas() {
       this.ctx.clearRect(0,0,this.sizeWidth,this.sizeHeight);
