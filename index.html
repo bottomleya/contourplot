@@ -22,12 +22,13 @@
         <button id="btnRenderContourPlot" type="button" href='javascript:void();' onclick="renderContourPlot(event)">Click to Render Contour Plot</button>
         <button id="btnResetCanvas" type="button" href='javascript:void();' onclick="resetCanvas(event)">Click to Reset Canvas</button>
     </div>
-    <canvas id="canvas" onmousedown="createPoint(event)" onmouseup="renderContourPoints(event)"></canvas>
+    <canvas id="canvas" onmousedown="createPoint(event)" onmouseup="renderContourPoints(event)" onmousemove="showContourVal(event)"></canvas>
         
         <script>
             
             var c = document.getElementById("canvas");
             var ctx = c.getContext("2d");
+            var cPlot = new ContourPlot([], ctx);
             
             function sizeCanvas() {
                 // get heading items
@@ -86,6 +87,13 @@
             }
             function renderContourPoints(e) {
                 clearInterval(growPointTimer);
+            }
+            
+            function showContourVal(e) {
+                console.log("showing contour value...");
+                const clickX = e.clientX - rect.left;
+                const clickY = e.clientY - rect.top;
+                console.log(cPlot.getContourVal(clickX, clickY));
             }
             function renderContourPlot(e) {
                 console.log("Rendering contour plot now...");
