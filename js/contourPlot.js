@@ -60,19 +60,24 @@ class contourPlot {
     }
     calculateSpatialAverage(x, y) {
         // loop through points
-        var valPerDistanceSum = 0;
-        var invertedDistanceSum = 0;
+        var normlisedSum = 0;
+        var distanceSum = 0;
         // calculate distances to each point
         for (var k=0; k<this.points.length; k++) {
             var distance = this.calculateDistance(x, y, this.points[k].x, this.points[k].y);
-            // limit division by zero
-            if (distance<0.001) distance = 0.001;
+            distance = distanceTranform(distance);
             // add to sums
-            valPerDistanceSum = valPerDistanceSum + this.points[k].val/distance;
-            invertedDistanceSum = invertedDistanceSum + 1/distance;
+            normlisedSum = normlisedSum + this.points[k].val * distance;
+            distanceSum = distanceSum + distance;
         }
         // calculate spatial average
-        return valPerDistanceSum/invertedDistanceSum;
+        return normlisedSum/distanceSum;
+    }
+    distanceTransform(distance) {
+        // limit division by zero
+        if (distance<0.0001) distance = 0.0001;
+        // return inverted distance, cube-rooted
+        return Math.pow(1/distance, 1/3);
     }
     calculateDistance(xa, ya, xb, yb) {
         return Math.sqrt(Math.pow(xa-xb, 2) + Math.pow(ya-yb,2))
