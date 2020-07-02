@@ -1,7 +1,7 @@
 class contourPlot {
     constructor(points, ctx) {
         
-      this.granularity = 10; // pixels per square
+      this.granularity = 5; // pixels per square
       this.backgroundColour = "#525252";
 
       this.baseGrowthRate = (this.maxVal-this.minVal)/200;
@@ -11,8 +11,8 @@ class contourPlot {
 
       this.sizeWidth = ctx.canvas.clientWidth;
       this.sizeHeight = ctx.canvas.clientHeight;
-      this.widthTotPx = Math.floor(this.sizeWidth / this.granularity)
-      this.heightTotPx = Math.floor(this.sizeHeight / this.granularity)
+      this.widthTotPx = Math.ceil(this.sizeWidth / this.granularity)
+      this.heightTotPx = Math.ceil(this.sizeHeight / this.granularity)
 
       this.colourMap = [
           { p: 0.0, color: { r: 0x00, g: 0xff, b: 0, a: 1} },
