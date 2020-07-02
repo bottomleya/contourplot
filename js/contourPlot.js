@@ -2,7 +2,7 @@ class contourPlot {
     constructor(points, ctx) {
         
       this.granularity = 9; // pixels per square
-      this.backgroundColour = #525252;
+      this.backgroundColour = "#525252";
 
       this.baseGrowthRate = (this.maxVal-this.minVal)/200;
 
