@@ -11,8 +11,8 @@ class contourPlot {
 
       this.sizeWidth = ctx.canvas.clientWidth;
       this.sizeHeight = ctx.canvas.clientHeight;
-      this.widthTotPx = Math.Floor(this.sizeWidth / Math.sqrt(this.granularity))
-      this.widthTotPx = Math.Floor(this.sizeHeight / Math.sqrt(this.granularity))
+      this.widthTotPx = Math.floor(this.sizeWidth / Math.sqrt(this.granularity))
+      this.widthTotPx = Math.floor(this.sizeHeight / Math.sqrt(this.granularity))
 
       this.colourMap = [
           { p: 0.0, color: { r: 0x00, g: 0xff, b: 0, a: 0.8} },
