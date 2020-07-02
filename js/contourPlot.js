@@ -50,18 +50,18 @@ class contourPlot {
         console.log(this.heightTotPx);
         // loop width
         for (var i=0; i<this.widthTotPx; i++) {
-            column = [];
+            var yVals = [];
             // loop height
             for (var j=0; j<this.heightTotPx; j++) {
                 var x = i*this.granularity;
                 var y = j*this.granularity;
                 var p = this.calculateSpatialAverage(x, y);
                 // add to matrix
-                column.push(p);
+                yVals.push(p);
                 var colour = this.percentageToColour(p);
                 this.drawSquare(x, y, this.granularity, colour);                
             }
-            this.plotMatrix.push(column);
+            this.plotMatrix.push(yVals);
         }
         console.log(this.plotMatrix);
         console.log("plot complete...");
