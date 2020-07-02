@@ -67,7 +67,7 @@ class contourPlot {
             var distance = this.calculateDistance(x, y, this.points[k].x, this.points[k].y);
             distance = this.distanceTransform(distance);
             // add to sums
-            normlisedSum = normlisedSum + this.points[k].val * distance;
+            normlisedSum = normlisedSum + Math.pow(this.points[k].val,1.5) * distance;
             distanceSum = distanceSum + distance;
         }
         // calculate spatial average
@@ -77,7 +77,7 @@ class contourPlot {
         // limit division by zero
         if (distance<0.0001) distance = 0.0001;
         // return inverted distance
-        return Math.pow(1/distance, 3);
+        return Math.pow(1/distance, 2);
     }
     calculateDistance(xa, ya, xb, yb) {
         return Math.sqrt(Math.pow(xa-xb, 2) + Math.pow(ya-yb,2))
