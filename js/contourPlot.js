@@ -76,8 +76,8 @@ class contourPlot {
     distanceTransform(distance) {
         // limit division by zero
         if (distance<0.0001) distance = 0.0001;
-        // return inverted distance, cube-rooted
-        return Math.pow(1/distance, 1/3);
+        // return inverted distance
+        return Math.pow(1/distance, 1/10);
     }
     calculateDistance(xa, ya, xb, yb) {
         return Math.sqrt(Math.pow(xa-xb, 2) + Math.pow(ya-yb,2))
