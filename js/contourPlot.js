@@ -62,7 +62,7 @@ class contourPlot {
       this.ctx.clearRect(0,0,this.sizeWidth,this.sizeHeight);
     }
     drawSquare(x, y, size, style) {
-        this.ctx.fillStyle(style);
+        this.ctx.fillStyle = style;
         this.ctx.fillRect(x, y, size);
     }
 }
