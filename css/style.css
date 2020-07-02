@@ -22,6 +22,7 @@ div {
 body { 
   margin: 0;
   background-color: #525252;
+  overflow: hidden;
 }
 
 button {
