@@ -1,6 +1,6 @@
 ## ContourPlot
 
-Create contour plots from dynamically creating nodes - [Link](https://bottomleya.github.io/contourplot/)
+Create contour plots from mouse clicks - [Link](https://bottomleya.github.io/contourplot/)
 
 ### Features
 
