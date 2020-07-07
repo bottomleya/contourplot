@@ -16,3 +16,4 @@ Contour map is defined using a list of contour points (essentially just contain 
  - Smooth out map to a background colour if far enough away from a point
  - Customised distance metrics
  - Compatibility with touch events
+ - Add tooltip for hovering over value
