@@ -13,5 +13,6 @@ Contour map is defined using a list of contour points (essentially just contain 
 ### Future Features
  - Create custom colour maps
  - Export final image as PNG or CSV
- - Smooth out map to a background colour
+ - Smooth out map to a background colour if far enough away from a point
  - Customised distance metrics
+ - Compatibility with touch events
