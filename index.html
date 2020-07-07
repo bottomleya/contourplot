@@ -23,7 +23,7 @@
         <button id="btnRenderContourPlot" type="button" href='javascript:void();' onclick="renderContourPlot(event)">Click to Render Contour Plot</button>
         <button id="btnResetCanvas" type="button" href='javascript:void();' onclick="resetCanvas(event)">Click to Reset Canvas</button>
     </div>
-    <canvas id="canvas" onmousedown="createPoint(event)" onmouseup="renderContourPoints(event)" onmousemove="showContourVal(event)"></canvas>
+    <canvas id="canvas" onmousedown="createPoint(event)" ontouchstart="createPoint(event)"  onmouseup="renderContourPoints(event)" ontouchend="renderContourPoints(event)" onmousemove="showContourVal(event)"></canvas>
         
         <script>
             
