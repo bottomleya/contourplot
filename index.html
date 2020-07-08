@@ -141,6 +141,10 @@
                     y: touchEvent.touches[0].clientY - rect.top
                 };
             }
+            
+            c.addEventListener("contextmenu", function (e) {
+                e.preventDefault();
+            }, false);
         </script>
     </body>
 </html>
