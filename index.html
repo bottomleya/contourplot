@@ -30,6 +30,8 @@
             var c = document.getElementById("canvas");
             var ctx = c.getContext("2d");
             var cPlot = new contourPlot([], ctx);
+            c.addEventListener("touchstart", createPointAtTouch(event));
+            c.addEventListener("touchend", renderContourPoints(event));
             
             function sizeCanvas() {
                 // get heading items
@@ -119,8 +121,6 @@
                 cPlot.drawPlot();
             }
             
-            c.addEventListener("touchstart", createPointAtTouch(event));
-            c.addEventListener("touchend", renderContourPoints(event));
             
         </script>
     </body>
