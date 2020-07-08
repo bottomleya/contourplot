@@ -23,7 +23,7 @@
         <button id="btnRenderContourPlot" type="button" href='javascript:void();' onclick="renderContourPlot(event)">Click to Render Contour Plot</button>
         <button id="btnResetCanvas" type="button" href='javascript:void();' onclick="resetCanvas(event)">Click to Reset Canvas</button>
     </div>
-    <canvas id="canvas" onmousedown="createPoint(event)" onmouseup="renderContourPoints(event)" onmousemove="showContourVal(event)"></canvas>
+    <canvas id="canvas" onmousedown="createPointAtMouse(event)" onmouseup="renderContourPoints(event)" onmousemove="showContourVal(event)"></canvas>
         
         <script>
             
@@ -67,15 +67,27 @@
                     points[i].colourIn();
                 }
             }
-                                        
-            function createPoint(e) {
+            
+            function createPointAtTouch(e) {
+                // Get x, y coordinates
+                const rect = c.getBoundingClientRect();
+                const clickX = e.touches[0].clientX - rect.left;
+                const clickY = e.touches[0].clientY - rect.top;
+                createPoint(clickX,clickY);
+            }
+            
+            function createPointAtMouse(e) {
                 // Get x, y coordinates
                 const rect = c.getBoundingClientRect();
                 const clickX = e.clientX - rect.left;
                 const clickY = e.clientY - rect.top;
+                createPoint(clickX,clickY);
+            }
+                                        
+            function createPoint(x, y) {
                 // Create new point
-                console.log("Creating new point at (" + clickX + ", " + clickY + ")");
-                cPoint = new contourPoint(clickX, clickY, ctx);
+                console.log("Creating new point at (" + x + ", " + y + ")");
+                cPoint = new contourPoint(x, y, ctx);
                 points.push(cPoint);
                     clearCanvas();
                     drawPoints();
@@ -105,7 +117,7 @@
                 cPlot.drawPlot();
             }
             
-            c.addEventListener("touchstart", createPoint(event));
+            c.addEventListener("touchstart", createPointAtTouch(event));
             c.addEventListener("touchend", renderContourPoints(event));
             
             // Prevent scrolling when touching the canvas
