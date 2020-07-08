@@ -122,6 +122,12 @@
             
             c.addEventListener("touchstart", createPointAtTouch(event));
             c.addEventListener("touchend", renderContourPoints(event));
+            
+            window.oncontextmenu = function(event) {
+                 event.preventDefault();
+                 event.stopPropagation();
+                 return false;
+            };
         </script>
     </body>
 </html>
