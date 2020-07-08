@@ -70,6 +70,7 @@
             
             function createPointAtTouch(e) {
                 // Get x, y coordinates
+                e.preventDefault();
                 const rect = c.getBoundingClientRect();
                 const clickX = e.touches[0].clientX - rect.left;
                 const clickY = e.touches[0].clientY - rect.top;
@@ -100,6 +101,7 @@
                 }, 100);
             }
             function renderContourPoints(e) {
+                e.preventDefault();
                 clearInterval(growPointTimer);
             }
             
@@ -120,22 +122,6 @@
             c.addEventListener("touchstart", createPointAtTouch(event));
             c.addEventListener("touchend", renderContourPoints(event));
             
-            // Prevent scrolling when touching the canvas
-            document.body.addEventListener("touchstart", function (e) {
-              if (e.target == canvas) {
-                e.preventDefault();
-              }
-            }, false);
-            document.body.addEventListener("touchend", function (e) {
-              if (e.target == canvas) {
-                e.preventDefault();
-              }
-            }, false);
-            document.body.addEventListener("touchmove", function (e) {
-              if (e.target == canvas) {
-                e.preventDefault();
-              }
-            }, false);
         </script>
     </body>
 </html>
