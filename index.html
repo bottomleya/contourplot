@@ -70,7 +70,6 @@
             
             function createPointAtTouch(e) {
                 // Get x, y coordinates
-                e.preventDefault();
                 const rect = c.getBoundingClientRect();
                 const clickX = e.touches[0].clientX - rect.left;
                 const clickY = e.touches[0].clientY - rect.top;
