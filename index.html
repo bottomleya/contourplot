@@ -68,14 +68,6 @@
                 }
             }
             
-            function createPointAtTouch(e) {
-                // Get x, y coordinates
-                const rect = c.getBoundingClientRect();
-                const clickX = e.touches[0].clientX - rect.left;
-                const clickY = e.touches[0].clientY - rect.top;
-                createPoint(clickX,clickY);
-            }
-            
             function createPointAtMouse(e) {
                 // Get x, y coordinates
                 const rect = c.getBoundingClientRect();
@@ -118,34 +110,36 @@
                 cPlot.drawPlot();
             }
             
-            
-            c.addEventListener("touchstart", createPointAtTouch(event));
-            c.addEventListener("touchend", renderContourPoints(event));
-            
-            window.oncontextmenu = function(event) {
-                 event.preventDefault();
-                 event.stopPropagation();
-                 return false;
-            };
-            
-            function absorbEvent_(event) {
-              var e = event || window.event;
-              e.preventDefault && e.preventDefault();
-              e.stopPropagation && e.stopPropagation();
-              e.cancelBubble = true;
-              e.returnValue = false;
-              return false;
-            }
+            // Set up touch events for mobile, etc
+            c.addEventListener("touchstart", function (e) {
+                mousePos = getTouchPos(c, e);
+                var touch = e.touches[0];
+                var mouseEvent = new MouseEvent("mousedown", {
+                    clientX: touch.clientX,
+                    clientY: touch.clientY
+                });
+                c.dispatchEvent(mouseEvent);
+            }, false);
+            c.addEventListener("touchend", function (e) {
+                var mouseEvent = new MouseEvent("mouseup", {});
+                c.dispatchEvent(mouseEvent);
+            }, false);
+            c.addEventListener("touchmove", function (e) {
+                var touch = e.touches[0];
+                var mouseEvent = new MouseEvent("mousemove", {
+                    clientX: touch.clientX,
+                    clientY: touch.clientY
+                });
+                c.dispatchEvent(mouseEvent);
+            }, false);
 
-            function preventLongPressMenu(node) {
-              node.ontouchstart = absorbEvent_;
-              node.ontouchmove = absorbEvent_;
-              node.ontouchend = absorbEvent_;
-              node.ontouchcancel = absorbEvent_;
-            }
-
-            function init() {
-              preventLongPressMenu(c);
+            // Get the position of a touch relative to the canvas
+            function getTouchPos(canvasDom, touchEvent) {
+                var rect = canvasDom.getBoundingClientRect();
+                return {
+                    x: touchEvent.touches[0].clientX - rect.left,
+                    y: touchEvent.touches[0].clientY - rect.top
+                };
             }
         </script>
     </body>
