@@ -47,7 +47,6 @@ class colourMap {
         b: Math.floor(lower.color.b * pctLower + upper.color.b * pctUpper),
         a: lower.color.a * pctLower + upper.color.a * pctUpper
     };
-    console.log(returnObj);
     if (!returnObj) {return 'rgba(' + [color.r, color.g, color.b, color.a].join(',') + ')'}; 
     return color;
   }
