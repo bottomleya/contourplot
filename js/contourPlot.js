@@ -21,8 +21,6 @@ class contourPlot {
     drawPlot() {
         // clear canvas
         this.clearCanvas();
-        console.log(this.widthTotPx);
-        console.log(this.heightTotPx);
         // loop width
         for (var i=0; i<this.widthTotPx; i++) {
             var yVals = [];
@@ -38,6 +36,7 @@ class contourPlot {
                 // calculate strength of nearest point
                 var strength = this.determineStrength(d);
                 console.log(strength);
+                console.log(colour);
                 // apply opacity
                 colour = this.applyStrength(strength, colour);
                 this.drawSquare(x, y, this.granularity, colour);                
@@ -55,7 +54,7 @@ class contourPlot {
                                   { p: 1.0, color: { r: rgb.r,   g: rgb.g,   b: rgb.b,   a: 1} }]};
         sColourMap.addColourScheme(cScheme);
         sColourMap.setColourScheme("fade");
-        return cScheme.percentageToColour(strength);
+        return sColourMap.percentageToColour(strength);
     }
     hex2Rgb(hex) {
         var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
