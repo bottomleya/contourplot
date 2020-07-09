@@ -11,6 +11,14 @@ class colourMap {
     this.colourMap = this.colourMaps[this.colourScheme];
     console.log(this.colourScheme);
   }
+  // add custom colour scheme
+  addColourScheme(colourSchemeDict) {
+    this.colourMaps.append(colourSchemeDict);
+  }
+  // set colour scheme
+  setColourScheme(colourScheme) {
+    this.colourScheme = colourScheme; 
+  }
   // converts a percentage value (0-1) to a RGBA value
   // adapted from https://stackoverflow.com/questions/7128675/from-green-to-red-color-depend-on-percentage
   percentageToColour(p) {
