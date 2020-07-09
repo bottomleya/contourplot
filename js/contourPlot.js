@@ -32,13 +32,11 @@ class contourPlot {
                 var [p, d]  = this.calculateSpatialAverage(x, y);
                 // add to matrix
                 yVals.push(p);
-                var colour = this.colourMap.percentageToColour(p);
+                var colourObj = this.colourMap.percentageToColour(p, False);
                 // calculate strength of nearest point
                 var strength = this.determineStrength(d);
-                console.log(strength);
-                console.log(colour);
-                // apply opacity
-                colour = this.applyStrength(strength, colour);
+                // apply strength
+                var colour = this.applyStrength(strength, colourObj);
                 this.drawSquare(x, y, this.granularity, colour);                
             }
             this.plotMatrix.push(yVals);
@@ -46,15 +44,13 @@ class contourPlot {
         console.log(this.plotMatrix);
         console.log("plot complete...");
     }
-    applyStrength(strength, colour) {
+    applyStrength(strength, colourObj) {
         var sColourMap = new colourMap();
-        var rgb = sColourMap.hex2Rgb(colour);
         console.log(colour);
         var bgRgb = sColourMap.hex2Rgb(this.backgroundColour);
-        console.log(rgb);
         console.log(bgRgb);
-        var cScheme = {"fade":   [{ p: 0.0, color: { r: bgRgb.r, g: bgRgb.g, b: bgRgb.b, a: 1} },
-                                  { p: 1.0, color: { r: rgb.r,   g: rgb.g,   b: rgb.b,   a: 1} }]};
+        var cScheme = {"fade":   [{ p: 0.0, color: { r: bgRgb.r,        g: bgRgb.g,         b: bgRgb.b,         a: 1} },
+                                  { p: 1.0, color: { r: colourObj.r,    g: colourObj.g,     b: colourObj.b,     a: 1} }]};
         sColourMap.addColourScheme(cScheme);
         sColourMap.setColourScheme("fade");
         return sColourMap.percentageToColour(strength);
