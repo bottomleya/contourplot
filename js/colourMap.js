@@ -5,7 +5,13 @@ class colourMap {
                                      { p: 1.0, color: { r: 0xff, g: 0x00, b: 0, a: 0.4} }],
                        "warm-100":  [{ p: 0.0, color: { r: 0x00, g: 0xff, b: 0, a: 1.0} },
                                      { p: 0.5, color: { r: 0xff, g: 0xff, b: 0, a: 1.0} },
-                                     { p: 1.0, color: { r: 0xff, g: 0x00, b: 0, a: 1.0} }]};
+                                     { p: 1.0, color: { r: 0xff, g: 0x00, b: 0, a: 1.0} }],
+                       "temp-50":  [{ p: 0.0, color: { r: 0x37, g: 0x85, b: 0xde, a: 1.0} },
+                                     { p: 0.5, color: { r: 0x4c, g: 0xc9, b: 0x3e, a: 1.0} },
+                                     { p: 1.0, color: { r: 0xfc, g: 0x5c, b: 0x2b, a: 1.0} }],
+                       "temp-100":  [{ p: 0.0, color: { r: 0x37, g: 0x85, b: 0xde, a: 0.8} },
+                                     { p: 0.5, color: { r: 0x4c, g: 0xc9, b: 0x3e, a: 0.5} },
+                                     { p: 1.0, color: { r: 0xfc, g: 0x5c, b: 0x2b, a: 0.4} }]};
     colourScheme = colourScheme || "warm-100"; // set default value
     this.setColourScheme(colourScheme);
     this.setColourMap();
