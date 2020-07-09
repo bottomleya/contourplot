@@ -67,12 +67,12 @@ class contourPlot {
         // loop through points
         var normlisedSum = 0;
         var distanceSum = 0;
-        var minDistance = 10000;
+        var minDistance = this.calculateDistance(0, 0, this.points[0].x, this.points[0].y);
         // calculate distances to each point
         for (var k=0; k<this.points.length; k++) {
             var distance = this.calculateDistance(x, y, this.points[k].x, this.points[k].y);
-            distance = this.distanceTransform(distance);
             if (distance<minDistance) {minDistance=distance;}
+            distance = this.distanceTransform(distance);
             // add to sums
             normlisedSum = normlisedSum + Math.pow(this.points[k].val,1.5) * distance;
             distanceSum = distanceSum + distance;
