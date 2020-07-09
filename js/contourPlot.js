@@ -3,6 +3,7 @@ class contourPlot {
         
       this.granularity = 5; // pixels per square
       this.backgroundColour = "#525252";
+      this.pxColourMap = new colourMap();
 
       this.baseGrowthRate = (this.maxVal-this.minVal)/200;
 
@@ -45,19 +46,19 @@ class contourPlot {
         console.log("plot complete...");
     }
     applyStrength(strength, colourObj) {
-        var sColourMap = new colourMap();
-        console.log(colourObj);
-        var bgRgb = sColourMap.hex2Rgb(this.backgroundColour);
-        console.log(bgRgb);
+        var bgRgb = this.pxColourMap.hex2Rgb(this.backgroundColour);
         var cScheme = {"fade":   [{ p: 0.0, color: { r: bgRgb.r,        g: bgRgb.g,         b: bgRgb.b,         a: 1} },
                                   { p: 1.0, color: { r: colourObj.r,    g: colourObj.g,     b: colourObj.b,     a: 1} }]};
-        sColourMap.addColourScheme(cScheme);
-        sColourMap.setColourScheme("fade");
-        return sColourMap.percentageToColour(strength);
+        this.pxColourMap.addColourScheme(cScheme);
+        this.pxColourMap.setColourScheme("fade");
+        return this.pxColourMap.percentageToColour(strength);
     }
     determineStrength(distance) {
-        var radii = 50;
-        return 1;
+        var radius = 50;
+        if (distance<0.00001) {distance = 0.00001;}
+        if (distance>radius) {distance = radius;}
+        var strength = 1 - distance/radius;
+        return strength;
     }
     calculateSpatialAverage(x, y) {
         // loop through points
