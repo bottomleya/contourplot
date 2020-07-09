@@ -6,10 +6,9 @@ class colourMap {
                        "warm-100":  [{ p: 0.0, color: { r: 0x00, g: 0xff, b: 0, a: 1.0} },
                                      { p: 0.5, color: { r: 0xff, g: 0xff, b: 0, a: 1.0} },
                                      { p: 1.0, color: { r: 0xff, g: 0x00, b: 0, a: 1.0} }]};
-    this.colourScheme = colourScheme || "warm-100"; // set default value
-    if (!(this.colourScheme in this.colourMaps)) {this.colourScheme = "warm-50";}
-    this.colourMap = this.colourMaps[this.colourScheme];
-    console.log(this.colourScheme);
+    colourScheme = colourScheme || "warm-100"; // set default value
+    this.setColourScheme(colourScheme);
+    this.setColourMap();
   }
   // add custom colour scheme
   addColourScheme(colourSchemeDict) {
@@ -19,7 +18,13 @@ class colourMap {
   }
   // set colour scheme
   setColourScheme(colourScheme) {
-    this.colourScheme = colourScheme; 
+    if (!(this.colourScheme in this.colourMaps)) {this.colourScheme = "warm-50";}
+    this.colourScheme = colourScheme;
+    this.setColourMap();
+  }
+  // set colour map
+  setColourMap() {
+    this.colourMap = this.colourMaps[this.colourScheme];
   }
   // converts a percentage value (0-1) to a RGBA value
   // adapted from https://stackoverflow.com/questions/7128675/from-green-to-red-color-depend-on-percentage
