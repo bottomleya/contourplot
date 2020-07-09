@@ -35,11 +35,11 @@ class contourPlot {
                 // add to matrix
                 yVals.push(p);
                 var colour = this.colourMap.percentageToColour(p);
-                // calculate opacity depending on nearest point
-                var opacity = this.determineOpacity(d);
+                // calculate strength of nearest point
+                var strength = this.determineStrength(d);
                 console.log(opacity);
                 // apply opacity
-                colour = this.applyOpacity(opacity, colour);
+                colour = this.applyStrength(strength, colour);
                 this.drawSquare(x, y, this.granularity, colour);                
             }
             this.plotMatrix.push(yVals);
@@ -47,10 +47,33 @@ class contourPlot {
         console.log(this.plotMatrix);
         console.log("plot complete...");
     }
-    applyOpacity(opacity, colour) {
-        return colour;
+    applyStrength(strength, colour) {
+        var sColourMap = new ColourMap();
+        var rgb = this.hex2Rgb(colour);
+        var bgRgb = this.hex2Rgb(this.backgroundColour);
+        var cScheme = {"fade":   [{ p: 0.0, color: { r: bgRgb.r, g: bgRgb.g, b: bgRgb.b, a: 1} },
+                                  { p: 1.0, color: { r: rgb.r,   g: rgb.g,   b: rgb.b,   a: 1} }]};
+        sColourMap.addColourScheme(cScheme);
+        sColourMap.setColourScheme("fade");
+        return cScheme.percentageToColour(strength);
     }
-    determineOpacity(distance) {
+    function hex2Rgb(hex) {
+        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? {
+            r: parseInt(result[1], 16),
+            g: parseInt(result[2], 16),
+            b: parseInt(result[3], 16)
+        } : null;
+    }
+    function componentToHex(c) {
+        var hex = c.toString(16);
+        return hex.length == 1 ? "0" + hex : hex;
+    }
+
+    function rgb2Hex(r, g, b) {
+        return "#" + this.componentToHex(r) + this.componentToHex(g) + this.componentToHex(b);
+    }
+    determineStrength(distance) {
         var radii = 50;
         return 1;
     }
