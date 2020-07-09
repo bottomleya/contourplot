@@ -37,7 +37,7 @@ class contourPlot {
                 var colour = this.colourMap.percentageToColour(p);
                 // calculate strength of nearest point
                 var strength = this.determineStrength(d);
-                console.log(opacity);
+                console.log(strength);
                 // apply opacity
                 colour = this.applyStrength(strength, colour);
                 this.drawSquare(x, y, this.granularity, colour);                
