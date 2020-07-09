@@ -23,8 +23,8 @@ class colourMap {
   }
   // converts a percentage value (0-1) to a RGBA value
   // adapted from https://stackoverflow.com/questions/7128675/from-green-to-red-color-depend-on-percentage
-  percentageToColour(p, returnString) {
-    returnString = returnString || true
+  percentageToColour(p, returnObj) {
+    returnObj = !!returnObj
     for (var i = 1; i < this.colourMap.length - 1; i++) {
         if (p < this.colourMap[i].p) {
             break;
@@ -42,8 +42,8 @@ class colourMap {
         b: Math.floor(lower.color.b * pctLower + upper.color.b * pctUpper),
         a: lower.color.a * pctLower + upper.color.a * pctUpper
     };
-    console.log(returnString);
-    if (returnString) {return 'rgba(' + [color.r, color.g, color.b, color.a].join(',') + ')'}; 
+    console.log(returnObj);
+    if (!returnObj) {return 'rgba(' + [color.r, color.g, color.b, color.a].join(',') + ')'}; 
     return color;
   }
   //
