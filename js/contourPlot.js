@@ -57,7 +57,7 @@ class contourPlot {
     }
     determineStrength(distance) {
         console.log(distance);
-        var radius = 50;
+        var radius = 150;
         if (distance>radius) {distance = radius;}
         var strength = 1 - Math.pow(distance/radius,2);
         return strength;
