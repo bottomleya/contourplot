@@ -1,5 +1,5 @@
 class contourPlot {
-    constructor(points, ctx, colourScheme) {
+    constructor(points, ctx, cm) {
         
       this.granularity = 3; // pixels per square
       this.backgroundColour = "#525252";
@@ -11,14 +11,13 @@ class contourPlot {
       this.ctx = ctx;
         
       this.plotMatrix = [];
-      this.colourScheme = colourScheme || "warm";
 
       this.sizeWidth = ctx.canvas.clientWidth;
       this.sizeHeight = ctx.canvas.clientHeight;
       this.widthTotPx = Math.ceil(this.sizeWidth / this.granularity)
       this.heightTotPx = Math.ceil(this.sizeHeight / this.granularity)
 
-      this.colourMap = new colourMap(this.colourScheme+"-100");
+      this.colourMap = cm || new colourMap("warm-100");
       
     }
     drawPlot() {
