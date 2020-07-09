@@ -48,19 +48,15 @@ class contourPlot {
     }
     applyStrength(strength, colourObj) {
         var bgRgb = this.pxColourMap.hex2Rgb(this.backgroundColour);
-        console.log(bgRgb);
-        console.log(colourObj);
         var cScheme = {"fade":   [{ p: 0.0, color: { r: bgRgb.r,        g: bgRgb.g,         b: bgRgb.b,         a: 1} },
                                   { p: 1.0, color: { r: colourObj.r,    g: colourObj.g,     b: colourObj.b,     a: 1} }]};
         this.pxColourMap.addColourScheme(cScheme);
         this.pxColourMap.setColourScheme("fade");
         var colour = this.pxColourMap.percentageToColour(strength);
-        console.log(this.pxColourMap);
-        console.log(colour);
         return colour;
     }
     determineStrength(distance) {
-        distance = distance * 50000000;
+        distance = distance * 5000000;
         var radius = 50;
         if (distance<0.00001) {distance = 0.00001;}
         if (distance>radius) {distance = radius;}
