@@ -57,6 +57,7 @@ class contourPlot {
         return this.pxColourMap.percentageToColour(strength);
     }
     determineStrength(distance) {
+        distance = distance * 10000000;
         var radius = 50;
         if (distance<0.00001) {distance = 0.00001;}
         if (distance>radius) {distance = radius;}
