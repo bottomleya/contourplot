@@ -33,7 +33,7 @@ class contourPlot {
                 var [p, d]  = this.calculateSpatialAverage(x, y);
                 // add to matrix
                 yVals.push(p);
-                var colourObj = this.colourMap.percentageToColour(p, false);
+                var colourObj = this.colourMap.percentageToColour(p, true);
                 // calculate strength of nearest point
                 var strength = this.determineStrength(d);
                 console.log("Val: " + p + ", Strength: " + strength);
