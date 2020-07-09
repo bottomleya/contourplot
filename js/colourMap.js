@@ -22,7 +22,7 @@ class colourMap {
   // converts a percentage value (0-1) to a RGBA value
   // adapted from https://stackoverflow.com/questions/7128675/from-green-to-red-color-depend-on-percentage
   percentageToColour(p, returnString) {
-    returnString = returnString || True
+    returnString = returnString || true
     for (var i = 1; i < this.colourMap.length - 1; i++) {
         if (p < this.colourMap[i].p) {
             break;
