@@ -57,7 +57,7 @@ class contourPlot {
         sColourMap.setColourScheme("fade");
         return cScheme.percentageToColour(strength);
     }
-    function hex2Rgb(hex) {
+    hex2Rgb(hex) {
         var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
         return result ? {
             r: parseInt(result[1], 16),
@@ -65,12 +65,12 @@ class contourPlot {
             b: parseInt(result[3], 16)
         } : null;
     }
-    function componentToHex(c) {
+    componentToHex(c) {
         var hex = c.toString(16);
         return hex.length == 1 ? "0" + hex : hex;
     }
 
-    function rgb2Hex(r, g, b) {
+    rgb2Hex(r, g, b) {
         return "#" + this.componentToHex(r) + this.componentToHex(g) + this.componentToHex(b);
     }
     determineStrength(distance) {
