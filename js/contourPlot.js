@@ -30,10 +30,16 @@ class contourPlot {
             for (var j=0; j<this.heightTotPx; j++) {
                 var x = i*this.granularity;
                 var y = j*this.granularity;
-                var p = this.calculateSpatialAverage(x, y);
+                // get percentage value and distance value
+                var [p, d]  = this.calculateSpatialAverage(x, y);
                 // add to matrix
                 yVals.push(p);
                 var colour = this.colourMap.percentageToColour(p);
+                // calculate opacity depending on nearest point
+                var opacity = this.determineOpacity(d);
+                console.log(opacity);
+                // apply opacity
+                colour = this.applyOpacity(opacity, colour);
                 this.drawSquare(x, y, this.granularity, colour);                
             }
             this.plotMatrix.push(yVals);
@@ -41,20 +47,29 @@ class contourPlot {
         console.log(this.plotMatrix);
         console.log("plot complete...");
     }
+    applyOpacity(opacity, colour) {
+        return colour;
+    }
+    determineOpacity(distance) {
+        var radii = 50;
+        return 1;
+    }
     calculateSpatialAverage(x, y) {
         // loop through points
         var normlisedSum = 0;
         var distanceSum = 0;
+        var minDistance = 10000;
         // calculate distances to each point
         for (var k=0; k<this.points.length; k++) {
             var distance = this.calculateDistance(x, y, this.points[k].x, this.points[k].y);
             distance = this.distanceTransform(distance);
+            if (distance<minDistance) {minDistance=distance;}
             // add to sums
             normlisedSum = normlisedSum + Math.pow(this.points[k].val,1.5) * distance;
             distanceSum = distanceSum + distance;
         }
         // calculate spatial average
-        return normlisedSum/distanceSum;
+        return [normlisedSum/distanceSum, minDistance];
     }
     distanceTransform(distance) {
         // limit division by zero
