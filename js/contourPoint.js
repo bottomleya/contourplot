@@ -1,6 +1,6 @@
 // Allows the creation of circles/points for building a contour plot
 class contourPoint {
-    constructor(x, y, ctx) {
+    constructor(x, y, ctx, cm) {
         
         this.x = x;
         this.y = y;
@@ -16,7 +16,7 @@ class contourPoint {
         this.d = this.minD;
         this.ctx = ctx;
         
-        this.colourMap = new colourMap("warm-50");
+        this.colourMap = cm || new colourMap("warm-50");
         
     }
     setValue(val) {
