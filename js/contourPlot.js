@@ -1,7 +1,7 @@
 class contourPlot {
     constructor(points, ctx, colMap) {
         
-      this.granularity = 5; // pixels per square
+      this.granularity = 3; // pixels per square
       this.backgroundColour = "#525252";
       this.pxColourMap = new colourMap();
 
@@ -36,7 +36,7 @@ class contourPlot {
                 var colourObj = this.colourMap.percentageToColour(p, true);
                 // calculate strength of nearest point
                 var strength = this.determineStrength(d);
-                if (p>0.99) {console.log("Val: " + p + ", Strength: " + strength);}
+                //if (p>0.99) {console.log("Val: " + p + ", Strength: " + strength);}
                 // apply strength
                 var colour = this.applyStrength(strength, colourObj);
                 this.drawSquare(x, y, this.granularity, colour);                
@@ -56,7 +56,6 @@ class contourPlot {
         return colour;
     }
     determineStrength(distance) {
-        console.log(distance);
         var radius = 150;
         if (distance>radius) {distance = radius;}
         var strength = 1 - Math.pow(distance/radius,2);
