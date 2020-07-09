@@ -29,7 +29,7 @@
             
             var c = document.getElementById("canvas");
             var ctx = c.getContext("2d");
-            var cPlot = new contourPlot([], ctx);
+            var cPlot = new contourPlot([], ctx, new colourMap("temp-100"));
             
             function sizeCanvas() {
                 // get heading items
@@ -79,7 +79,7 @@
             function createPoint(x, y) {
                 // Create new point
                 console.log("Creating new point at (" + x + ", " + y + ")");
-                cPoint = new contourPoint(x, y, ctx);
+                cPoint = new contourPoint(x, y, ctx, new colourMap("temp-50"));
                 points.push(cPoint);
                     clearCanvas();
                     drawPoints();
