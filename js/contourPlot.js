@@ -60,7 +60,7 @@ class contourPlot {
         var radius = 50;
         if (distance<0.0000001) {distance = 0.0000001;}
         if (distance>radius) {distance = radius;}
-        var strength = Math.pow(distance/radius,2);
+        var strength = 1 - Math.pow(distance/radius,2);
         return strength;
     }
     calculateSpatialAverage(x, y) {
