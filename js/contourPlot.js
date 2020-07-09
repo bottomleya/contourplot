@@ -48,29 +48,15 @@ class contourPlot {
     }
     applyStrength(strength, colour) {
         var sColourMap = new colourMap();
-        var rgb = this.hex2Rgb(colour);
-        var bgRgb = this.hex2Rgb(this.backgroundColour);
+        var rgb = sColourMap.hex2Rgb(colour);
+        var bgRgb = sColourMap.hex2Rgb(this.backgroundColour);
+        console.log(rgb);
+        console.log(bgRgb);
         var cScheme = {"fade":   [{ p: 0.0, color: { r: bgRgb.r, g: bgRgb.g, b: bgRgb.b, a: 1} },
                                   { p: 1.0, color: { r: rgb.r,   g: rgb.g,   b: rgb.b,   a: 1} }]};
         sColourMap.addColourScheme(cScheme);
         sColourMap.setColourScheme("fade");
         return sColourMap.percentageToColour(strength);
-    }
-    hex2Rgb(hex) {
-        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-        return result ? {
-            r: parseInt(result[1], 16),
-            g: parseInt(result[2], 16),
-            b: parseInt(result[3], 16)
-        } : null;
-    }
-    componentToHex(c) {
-        var hex = c.toString(16);
-        return hex.length == 1 ? "0" + hex : hex;
-    }
-
-    rgb2Hex(r, g, b) {
-        return "#" + this.componentToHex(r) + this.componentToHex(g) + this.componentToHex(b);
     }
     determineStrength(distance) {
         var radii = 50;
