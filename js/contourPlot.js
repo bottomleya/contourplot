@@ -47,13 +47,17 @@ class contourPlot {
         console.log("plot complete...");
     }
     applyStrength(strength, colourObj) {
-        console.log(colourObj);
         var bgRgb = this.pxColourMap.hex2Rgb(this.backgroundColour);
+        console.log(bgRgb);
+        console.log(colourObj);
         var cScheme = {"fade":   [{ p: 0.0, color: { r: bgRgb.r,        g: bgRgb.g,         b: bgRgb.b,         a: 1} },
                                   { p: 1.0, color: { r: colourObj.r,    g: colourObj.g,     b: colourObj.b,     a: 1} }]};
         this.pxColourMap.addColourScheme(cScheme);
         this.pxColourMap.setColourScheme("fade");
-        return this.pxColourMap.percentageToColour(strength);
+        var colour = this.pxColourMap.percentageToColour(strength);
+        console.log(this.pxColourMap);
+        console.log(colour);
+        return colour;
     }
     determineStrength(distance) {
         distance = distance * 50000000;
