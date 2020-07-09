@@ -46,7 +46,7 @@ class contourPlot {
     }
     applyStrength(strength, colourObj) {
         var sColourMap = new colourMap();
-        console.log(colour);
+        console.log(colourObj);
         var bgRgb = sColourMap.hex2Rgb(this.backgroundColour);
         console.log(bgRgb);
         var cScheme = {"fade":   [{ p: 0.0, color: { r: bgRgb.r,        g: bgRgb.g,         b: bgRgb.b,         a: 1} },
