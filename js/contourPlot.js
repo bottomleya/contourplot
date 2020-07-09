@@ -49,7 +49,7 @@ class contourPlot {
     applyStrength(strength, colour) {
         var sColourMap = new colourMap();
         var rgb = sColourMap.hex2Rgb(colour);
-        console.log(this.backgroundColour);
+        console.log(colour);
         var bgRgb = sColourMap.hex2Rgb(this.backgroundColour);
         console.log(rgb);
         console.log(bgRgb);
