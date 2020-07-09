@@ -36,7 +36,7 @@ class contourPlot {
                 var colourObj = this.colourMap.percentageToColour(p, true);
                 // calculate strength of nearest point
                 var strength = this.determineStrength(d);
-                console.log("Val: " + p + ", Strength: " + strength);
+                if (p>0.99) {console.log("Val: " + p + ", Strength: " + strength);}
                 // apply strength
                 var colour = this.applyStrength(strength, colourObj);
                 this.drawSquare(x, y, this.granularity, colour);                
