@@ -13,7 +13,9 @@ class colourMap {
   }
   // add custom colour scheme
   addColourScheme(colourSchemeDict) {
-    this.colourMaps.push(colourSchemeDict);
+    for (var cScheme in colourSchemeDict) {
+      this.colourMaps[cScheme] = colourSchemeDict[cScheme];
+    }
   }
   // set colour scheme
   setColourScheme(colourScheme) {
