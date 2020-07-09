@@ -106,7 +106,7 @@
             }
             function renderContourPlot(e) {
                 console.log("Rendering contour plot now...");
-                cPlot = new contourPlot(points, ctx);
+                cPlot = new contourPlot(points, ctx, new colourMap("temp-100"));
                 cPlot.drawPlot();
             }
             
