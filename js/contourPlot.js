@@ -18,6 +18,8 @@ class contourPlot {
       this.heightTotPx = Math.ceil(this.sizeHeight / this.granularity)
 
       this.colourMap = cm || new colourMap("warm-100");
+        
+      this.fadeToBackground = true;
       
     }
     drawPlot() {
@@ -34,12 +36,16 @@ class contourPlot {
                 var [p, d]  = this.calculateSpatialAverage(x, y);
                 // add to matrix
                 yVals.push(p);
-                var colourObj = this.colourMap.percentageToColour(p, true);
-                // calculate strength of nearest point
-                var strength = this.determineStrength(d);
-                //if (p>0.99) {console.log("Val: " + p + ", Strength: " + strength);}
-                // apply strength
-                var colour = this.applyStrength(strength, colourObj);
+                if (this.fadeToBackground) {
+                    var colourObj = this.colourMap.percentageToColour(p, true);
+                    // calculate strength of nearest point
+                    var strength = this.determineStrength(d);
+                    //if (p>0.99) {console.log("Val: " + p + ", Strength: " + strength);}
+                    // apply strength
+                    var colour = this.applyStrength(strength, colourObj);
+                } else {
+                    var colour = this.colourMap.percentageToColour(p, false);
+                }
                 this.drawSquare(x, y, this.granularity, colour);                
             }
             this.plotMatrix.push(yVals);
