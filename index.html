@@ -20,9 +20,6 @@
     <div class="heading">
         <b>Click</b> and <b>Hold</b> to Generate Points!
         </br>
-        <! --
-        <button id="btnRenderContourPlot" type="button" href='javascript:void();' onclick="renderContourPlot(event)">Click to Render Contour Plot</button> 
-        -->
         <button id="btnResetCanvas" type="button" href='javascript:void();' onclick="resetCanvas(event)">Click to Reset Canvas</button>
     </div>
     <canvas id="canvas" onmousedown="createPointAtMouse(event)" onmouseup="renderContourPoints(event)" onmousemove="showContourVal(event)" onload="init()"></canvas>
